@@ -85,6 +85,30 @@ Claude Code 收到 cmux 操作指示后，会按照 SKILL.md 中描述的模式�
 
 需要快速查看命令列表和基本用法时使用。
 
+## 同步上游更新
+
+当源仓库 [hummer98/using-cmux](https://github.com/hummer98/using-cmux) 有更新时，运行以下命令同步并翻译：
+
+```bash
+# 方法1：使用 make（推荐）
+make sync
+
+# 方法2：直接运行脚本
+./scripts/sync-and-translate.sh
+```
+
+脚本会自动：
+1. 🔄 获取上游最新代码
+2. 🔀 合并到你的分支
+3. 📝 检测需要翻译的日文文件
+4. 🤖 如果可用，使用 Claude Code 自动翻译
+5. 💾 提交并推送到你的仓库
+
+> **提示**: 第一次使用前，确保已配置 upstream：
+> ```bash
+> git remote add upstream https://github.com/hummer98/using-cmux.git
+> ```
+
 ## 许可证
 
 [MIT](LICENSE)
