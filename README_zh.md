@@ -4,6 +4,25 @@
 
 > **中文翻译版** - 基于 [hummer98/using-cmux](https://github.com/hummer98/using-cmux) 的中文翻译版本。
 
+## 📢 原版声明与免责声明
+
+### 原版来源
+本项目是 [hummer98/using-cmux](https://github.com/hummer98/using-cmux) 的**中文翻译版本**（fork）。  
+原作者：**hummer98** - 所有原始代码、设计和文档版权归原作者所有。
+
+### 免责声明
+- ✖️ **本翻译版与原作者无关** - hummer98 不对本翻译版本的内容准确性、完整性负责
+- ✖️ **翻译质量问题** - 如翻译有误、术语不统一、表达不清等问题，责任由翻译者承担
+- ✖️ **使用风险** - 使用本翻译版产生的任何问题、损失，与原作者无关
+- ✅ **原版参考** - 如需最准确内容，请直接访问 [原版仓库](https://github.com/hummer98/using-cmux)
+
+### 翻译者信息
+- 翻译者：1dooooo
+- 仓库地址：https://github.com/1dooooo/using-cmux
+- 原版同步：本仓库会定期同步原版更新并重新翻译
+
+---
+
 AI 操作 cmux 的 Claude Code 技能包。
 
 ## 动机

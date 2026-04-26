@@ -4,6 +4,12 @@ set -euo pipefail
 # sync-and-translate.sh
 # 一键同步上游更新并翻译日文内容
 # 用法: ./scripts/sync-and-translate.sh
+#
+# 免责声明：
+# 本脚本属于 using-cmux 中文翻译版（https://github.com/1dooooo/using-cmux）
+# 原版：https://github.com/hummer98/using-cmux
+# 原作者：hummer98（不对本翻译版负责）
+# 翻译者：1dooooo（承担翻译质量责任）
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
