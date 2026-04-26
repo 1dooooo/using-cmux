@@ -1,12 +1,12 @@
 {
   "name": "using-cmux",
   "version": "1.8.0",
-  "description": "Skill for operating cmux terminal multiplexer. Pane splitting, sub-agent spawning/monitoring/result collection, command sending, screen reading, and notifications.",
+  "description": "中文版 - cmux 终端操作技能包。面板分割、子代理启动/监控/结果回收、命令发送、屏幕读取、通知。",
   "author": {
-    "name": "hummer98"
+    "name": "1dooooo (translated from hummer98)"
   },
   "license": "MIT",
-  "repository": "https://github.com/hummer98/using-cmux",
+  "repository": "https://github.com/1dooooo/using-cmux",
   "hooks": {
     "SessionStart": [
       {

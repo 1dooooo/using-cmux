@@ -1,6 +1,8 @@
-# using-cmux
+# using-cmux (中文翻译版)
 
 ![using-cmux](banner.jpeg)
+
+> **中文翻译版** - 基于 [hummer98/using-cmux](https://github.com/hummer98/using-cmux) 的中文翻译版本。
 
 AI 操作 cmux 的 Claude Code 技能包。
 
@@ -42,7 +44,7 @@ Claude Code 内置的 `Agent` 工具虽然方便，但看不到内部发生了�
 ### 方法1: Plugin（推荐）
 
 ```
-/plugin marketplace add hummer98/using-cmux
+/plugin marketplace add 1dooooo/using-cmux
 /plugin install using-cmux
 ```
 
@@ -60,7 +62,7 @@ Claude Code 内置的 `Agent` 工具虽然方便，但看不到内部发生了�
 ### 方法2: Agent Skills（仅技能）
 
 ```bash
-npx skills add hummer98/using-cmux
+npx skills add 1dooooo/using-cmux
 ```
 
 > 注: Agent Skills 不包含命令（`/cmux`）和包装脚本（如 `cmux-read`）。完整功能请使用方式1。

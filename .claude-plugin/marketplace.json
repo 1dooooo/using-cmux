@@ -1,19 +1,19 @@
 {
-  "name": "hummer98-using-cmux",
+  "name": "1dooooo-using-cmux-zh",
   "owner": {
-    "name": "hummer98",
-    "email": "github@hummer98"
+    "name": "1dooooo",
+    "email": "github@1dooooo"
   },
   "plugins": [
     {
       "name": "using-cmux",
       "source": "./",
-      "description": "Skill for operating cmux terminal multiplexer. Pane splitting, sub-agent spawning/monitoring/result collection, command sending, screen reading, and notifications.",
+      "description": "中文版 - cmux 终端操作技能包。面板分割、子代理启动/监控/结果回收、命令发送、屏幕读取、通知。",
       "version": "1.8.0",
       "author": {
-        "name": "hummer98"
+        "name": "1dooooo (translated from hummer98)"
       },
-      "repository": "https://github.com/hummer98/using-cmux",
+      "repository": "https://github.com/1dooooo/using-cmux",
       "license": "MIT",
       "keywords": ["claude-skill", "cmux", "terminal", "sub-agent", "multiplexer"],
       "category": "terminal",
