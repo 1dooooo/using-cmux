@@ -1,4 +1,4 @@
-**[日本語](README.ja.md)** | English
+**[中文](README_zh.md)** | English
 
 ![using-cmux](banner.jpeg)
 
@@ -42,7 +42,7 @@ The existing [hashangit/cmux-skill](https://github.com/hashangit/cmux-skill) ded
 ### Option 1: Plugin (recommended)
 
 ```
-/plugin marketplace add hummer98/using-cmux
+/plugin marketplace add 1dooooo/using-cmux
 /plugin install using-cmux
 ```
 
@@ -60,7 +60,7 @@ Skills, commands, and hooks are installed together.
 ### Option 2: Agent Skills (skills only)
 
 ```bash
-npx skills add hummer98/using-cmux
+npx skills add 1dooooo/using-cmux
 ```
 
 > Note: Commands (`/cmux`) and wrapper scripts (`cmux-read` etc.) are not included in Agent Skills distribution. Use Option 1 for full functionality.
