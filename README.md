@@ -43,7 +43,7 @@ The existing [hashangit/cmux-skill](https://github.com/hashangit/cmux-skill) ded
 
 ```
 /plugin marketplace add 1dooooo/using-cmux
-/plugin install using-cmux
+/plugin install using-cmux-zh
 ```
 
 Skills, commands, and hooks are installed together.
@@ -51,7 +51,7 @@ Skills, commands, and hooks are installed together.
 **To update:**
 
 ```
-/plugin update using-cmux
+/plugin update using-cmux-zh
 /reload-plugins
 ```
 

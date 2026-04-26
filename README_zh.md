@@ -64,7 +64,7 @@ Claude Code 内置的 `Agent` 工具虽然方便，但看不到内部发生了�
 
 ```
 /plugin marketplace add 1dooooo/using-cmux
-/plugin install using-cmux
+/plugin install using-cmux-zh
 ```
 
 技能、命令、Hook 一次性安装。
@@ -72,7 +72,7 @@ Claude Code 内置的 `Agent` 工具虽然方便，但看不到内部发生了�
 **更新:**
 
 ```
-/plugin update using-cmux
+/plugin update using-cmux-zh
 /reload-plugins
 ```
 

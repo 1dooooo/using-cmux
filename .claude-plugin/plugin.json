@@ -1,5 +1,5 @@
 {
-  "name": "using-cmux",
+  "name": "using-cmux-zh",
   "version": "1.8.0",
   "description": "中文版 - cmux 终端操作技能包。面板分割、子代理启动/监控/结果回收、命令发送、屏幕读取、通知。",
   "author": {

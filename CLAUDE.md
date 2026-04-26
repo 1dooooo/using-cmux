@@ -7,7 +7,7 @@ cmux 终端操作的 Claude Code 技能包。
 
 | 文件 | 职责 |
 |---------|------|
-| `skills/using-cmux/SKILL.md` | 主技能定义（AI 读取） |
+| `skills/using-cmux-zh/SKILL.md` | 主技能定义（AI 读取） |
 | `commands/cmux.md` | `/cmux` 斜杠命令 |
 | `commands/cfork.md` | `/cfork` 会话分叉命令 |
 | `bin/cmux-grid` | 将面板整理为网格布局的脚本 |

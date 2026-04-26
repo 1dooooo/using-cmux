@@ -1,5 +1,5 @@
 ---
-name: using-cmux
+name: using-cmux-zh
 description: "cmux 终端内操作技能。用于窗口分割、子代理启动/监控/结果收集、命令发送、屏幕读取、通知。当 CMUX_* 环境变量存在时触发。"
 ---
 

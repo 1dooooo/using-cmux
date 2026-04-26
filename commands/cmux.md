@@ -65,4 +65,4 @@ cmux send-key --surface surface:N return
 | `CMUX_WORKSPACE_ID` | 当前工作区 UUID |
 | `CMUX_SURFACE_ID` | 当前表面 UUID |
 
-详细内容请参考 using-cmux 技能（SKILL.md）。
+详细内容请参考 using-cmux-zh 技能（SKILL.md）。
