@@ -1,27 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# cmux-grid: ワークスペースのペインをグリッドレイアウトに整列
+# cmux-grid: 将工作区的面板整理为网格布局
 #
 # Usage:
-#   cmux-grid              現在のワークスペースを自動グリッドに整列
-#   cmux-grid 2x3          指定次元のグリッドに整列
+#   cmux-grid              将当前工作区自动整理为网格
+#   cmux-grid 2x3          整理为指定维度的网格
 #   cmux-grid --workspace workspace:7
 #
-# 動作原理:
-#   1. 全サーフェスを1つのペインに統合（タブ化）
-#   2. new-split down で行を作り、new-split right で列を作る
-#   3. move-surface でサーフェスを配置、骨格の空サーフェスを削除
+# 工作原理:
+#   1. 将所有表面合并到一个面板（标签化）
+#   2. 用 new-split down 创建行，用 new-split right 创建列
+#   3. 用 move-surface 配置表面，删除骨架的空表面
 
 usage() {
   echo "Usage: cmux-grid [RxC] [--workspace <ref>]"
   echo ""
-  echo "  RxC               グリッド次元（例: 2x2, 2x3）。省略時は自動計算"
-  echo "  --workspace <ref>  対象ワークスペース（省略時: 現在のワークスペース）"
+  echo "  RxC               网格维度（如: 2x2, 2x3）。省略时自动计算"
+  echo "  --workspace <ref>  目标工作区（省略时: 当前工作区）"
   exit 0
 }
 
-# --- 引数パース ---
+# --- 参数解析 ---
 WS="${CMUX_WORKSPACE_ID:-}"
 FORCE_ROWS=""
 FORCE_COLS=""
@@ -39,16 +39,16 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z "${CMUX_SOCKET_PATH:-}" ]]; then
-  echo "エラー: cmux 環境外です" >&2
+  echo "错误: 不在 cmux 环境中" >&2
   exit 1
 fi
 
 if [[ -z "$WS" ]]; then
-  echo "エラー: ワークスペースが特定できません" >&2
+  echo "错误: 无法确定工作区" >&2
   exit 1
 fi
 
-# --- サーフェス収集 ---
+# --- 收集表面 ---
 SURFACES=()
 
 while IFS= read -r pane_ref; do
@@ -61,16 +61,16 @@ done < <(cmux list-panes --workspace "$WS" 2>/dev/null | grep -o 'pane:[0-9]*')
 N=${#SURFACES[@]}
 
 if [[ $N -le 1 ]]; then
-  echo "サーフェスが1つ以下です。整列不要。"
+  echo "表面数量为1或更少，无需整理。"
   exit 0
 fi
 
-# --- グリッド次元計算 ---
+# --- 计算网格维度 ---
 if [[ -n "$FORCE_ROWS" && -n "$FORCE_COLS" ]]; then
   ROWS=$FORCE_ROWS
   COLS=$FORCE_COLS
   if [[ $((ROWS * COLS)) -lt $N ]]; then
-    echo "エラー: ${ROWS}x${COLS} < サーフェス数${N}" >&2
+    echo "错误: ${ROWS}x${COLS} < 表面数${N}" >&2
     exit 1
   fi
 else
@@ -82,16 +82,16 @@ else
   ROWS=$(( (N + COLS - 1) / COLS ))
 fi
 
-echo "サーフェス ${N}個 → ${ROWS}×${COLS} グリッド"
+echo "表面 ${N}个 → ${ROWS}×${COLS} 网格"
 
-# --- ヘルパー ---
+# --- 辅助函数 ---
 get_panes() {
   cmux list-panes --workspace "$WS" 2>/dev/null | grep -o 'pane:[0-9]*'
 }
 
-# new-split で骨格ペインを作り、サーフェスを入れ替える
-# 引数: $1=方向, $2=基準surface, $3=配置するsurface
-# 出力: 新ペインのref
+# 用 new-split 创建骨架面板，然后替换表面
+# 参数: $1=方向, $2=基准surface, $3=要配置的表面
+# 输出: 新面板的ref
 scaffold_and_place() {
   local dir="$1" base_surf="$2" target_surf="$3"
 
@@ -100,7 +100,7 @@ scaffold_and_place() {
   local scaffold_surf
   scaffold_surf=$(echo "$result" | grep -o 'surface:[0-9]*')
 
-  # 骨格サーフェスが入ったペインを特定
+  # 定位包含骨架表面的面板
   local new_pane=""
   while IFS= read -r pane_ref; do
     if cmux list-pane-surfaces --workspace "$WS" --pane "$pane_ref" 2>/dev/null | grep -q "$scaffold_surf"; then
@@ -110,7 +110,7 @@ scaffold_and_place() {
   done < <(get_panes)
 
   if [[ -z "$new_pane" ]]; then
-    echo "警告: 骨格ペインを検出できません ($scaffold_surf)" >&2
+    echo "警告: 无法检测骨架面板 ($scaffold_surf)" >&2
     return 1
   fi
 
@@ -120,7 +120,7 @@ scaffold_and_place() {
   echo "$new_pane"
 }
 
-# --- Step 1: 全サーフェスを先頭ペインに統合 ---
+# --- Step 1: 将所有表面合并到首个面板 ---
 ANCHOR=$(get_panes | head -1)
 
 for ((i = 1; i < N; i++)); do
@@ -128,9 +128,9 @@ for ((i = 1; i < N; i++)); do
 done
 sleep 0.3
 
-echo "統合完了。グリッド構築中..."
+echo "合并完成。构建网格中..."
 
-# --- Step 2: 行を作る (new-split down) ---
+# --- Step 2: 创建行 (new-split down) ---
 ROW_PANES=("$ANCHOR")
 
 for ((r = 1; r < ROWS; r++)); do
@@ -141,7 +141,7 @@ for ((r = 1; r < ROWS; r++)); do
   new_pane=$(scaffold_and_place down "$base_surf" "${SURFACES[$start]}")
   ROW_PANES+=("$new_pane")
 
-  # この行の残りサーフェスを同じペインに移動
+  # 将该行剩余表面移到同一个面板
   for ((c = 1; c < COLS; c++)); do
     idx=$((start + c))
     [[ $idx -ge $N ]] && break
@@ -149,7 +149,7 @@ for ((r = 1; r < ROWS; r++)); do
   done
 done
 
-# --- Step 3: 各行内で列を作る (new-split right) ---
+# --- Step 3: 在每行内创建列 (new-split right) ---
 for ((r = 0; r < ${#ROW_PANES[@]}; r++)); do
   start=$((r * COLS))
   row_count=$COLS
@@ -164,4 +164,4 @@ for ((r = 0; r < ${#ROW_PANES[@]}; r++)); do
   done
 done
 
-echo "✅ ${ROWS}×${COLS} グリッド完了"
+echo "✅ ${ROWS}×${COLS} 网格完成"

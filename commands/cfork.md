@@ -1,9 +1,9 @@
-# cfork - 会話を新しい cmux ペインにフォーク
+# cfork - 将会话分叉到新的 cmux 面板
 
-即座に以下を1回の bash で実行せよ（引数があれば `right` をその方向に置き換え）:
+立即用一次 bash 执行以下命令（如有参数，将 `right` 替换为该方向）:
 
 ```bash
 S=$(cmux new-split right | awk '{print $2}') && cmux-send --surface "$S" "claude --continue --fork-session\n"
 ```
 
-ポーリング・Trust 検出・起動確認は一切不要。結果を1行で報告。
+无需轮询、Trust 检测、启动确认。用一行报告结果。
